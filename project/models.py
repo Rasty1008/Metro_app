@@ -1,8 +1,12 @@
-from sqlmodel import Field, SQLModel
-from typing import Optional
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
 
-class Schedule(SQLModel, table=True):
-    id: Optional[int] = Field(default = None, primary_key = True)
-    station: str
-    rayymbek_momyshuly: str
-    momyshuly_rayymbek: str
+Base = declarative_base()
+
+class Schedule(Base):
+    __tablename__ = "Schedule"
+
+    id = Column(Integer, primary_key=True)
+    stations = Column(String)
+    rayymbek_momyshuly = Column(String)
+    momyshuly_rayymbek = Column(String)
